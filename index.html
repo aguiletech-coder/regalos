@@ -44,6 +44,10 @@
     <form class="modal__form" id="form" novalidate>
       <p class="modal__eyebrow">Reservar regalo</p>
       <h3 id="modal-titulo" class="modal__titulo"></h3>
+      <div class="detalle" id="detalle" hidden>
+        <p class="detalle__precio" id="detalle-precio" hidden><span>Precio aproximado</span><strong id="detalle-precio-valor"></strong></p>
+        <p class="detalle__link" id="detalle-link-fila" hidden><span>Dónde comprarlo</span><a id="detalle-link" href="#" target="_blank" rel="noopener noreferrer"></a></p>
+      </div>
       <p class="modal__ayuda">Dejanos tu nombre y lo marcamos como reservado para vos.</p>
 
       <label class="campo" for="nombre">Tu nombre</label>
@@ -70,6 +74,7 @@
     <div class="modal__ok" id="ok" hidden>
       <p class="modal__script">¡Gracias!</p>
       <p id="ok-texto"></p>
+      <p class="ok__compra" id="ok-compra" hidden><a class="btn" id="ok-link" href="#" target="_blank" rel="noopener noreferrer">Ir a comprarlo</a></p>
       <button type="button" class="btn" id="ok-cerrar">Cerrar</button>
     </div>
   </dialog>

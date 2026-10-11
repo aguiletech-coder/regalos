@@ -17,6 +17,7 @@ const REGALOS = [
   { id: "Yogurtera",    nombre: "Yogurtera", desc: "Para preparar yogures caseros, ricos y saludables, disfrutando de algo hecho en casa." , foto:"img/yogurt.png"},
   { id: "pava",       nombre: "Pava eléctrica",   desc: "Agua caliente al instante para el mate de cada tarde." , foto:"img/pava.png"}
 ];
+// Datos opcionales por regalo: precio: "$85.000" y link: "https://..." (si faltan, no se muestran).
 const FOTO = "img/regalo.svg"; // foto genérica; para una foto real agregá `foto: "img/xxx.jpg"` al regalo
 
 const $ = (id) => document.getElementById(id);
@@ -97,6 +98,18 @@ function mostrar(v) { for (const k in vistas) vistas[k].hidden = k !== v; }
 function setError(msg) { errorEl.textContent = msg; errorEl.hidden = !msg; }
 function cerrar() { modal.close(); }
 
+function linkSeguro(url) {
+  try { const u = new URL(url); return /^https?:$/.test(u.protocol) ? u : null; } catch { return null; }
+}
+function mostrarDetalle(g) {
+  const u = g.link ? linkSeguro(g.link) : null;
+  $("detalle-precio").hidden = !g.precio;
+  $("detalle-precio-valor").textContent = g.precio || "";
+  $("detalle-link-fila").hidden = !u;
+  if (u) { const a = $("detalle-link"); a.href = u.href; a.textContent = u.hostname.replace(/^www\./, "") + " ↗"; }
+  $("detalle").hidden = !g.precio && !u;
+}
+
 grid.addEventListener("click", (e) => {
   const btn = e.target.closest("button[data-id]");
   if (!btn || btn.disabled) return;
@@ -110,6 +123,7 @@ grid.addEventListener("click", (e) => {
     return;
   }
   $("modal-titulo").textContent = actual.nombre;
+  mostrarDetalle(actual);
   form.reset(); setError("");
   confirmar.hidden = false; confirmar.disabled = false; confirmar.textContent = "Confirmar reserva";
   mostrar("form");
@@ -134,6 +148,9 @@ form.addEventListener("submit", async (e) => {
     if (res.ok) {
       claves[actual.id] = clave; guardarClaves();
       $("ok-texto").textContent = `${nombre}, te reservamos «${actual.nombre}». ¡Gracias por querer regalarnos algo! Si cambiás de idea, podés quitar la reserva desde esta misma página.`;
+      const u = actual.link ? linkSeguro(actual.link) : null;
+      $("ok-compra").hidden = !u;
+      if (u) $("ok-link").href = u.href;
       mostrar("ok");
     } else {
       setError("Ups, alguien acaba de reservar este regalo. Probá con otro.");
