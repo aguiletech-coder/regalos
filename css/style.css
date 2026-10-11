@@ -1,0 +1,121 @@
+:root{
+  --bordo:#6d1f2f;
+  --bordo-hover:#84283b;
+  --crema:#f8f5f1;
+  --crema-2:#f8f2ea;
+  --papel:#fffdf8;
+  --linea:#c7c7c7;
+  --texto:#333;
+  --suave:#777;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Lora',serif;
+  color:var(--texto);
+  background:var(--crema) url("../img/blanco.png");
+  line-height:1.6;
+  overflow-x:hidden;
+}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* HERO */
+.hero{
+  background:var(--bordo) url("../img/rojo.png") center/cover;
+  color:#f0eeef;
+  text-align:center;
+  padding:clamp(24px,4vw,48px) 20px clamp(56px,9vw,100px);
+}
+.hero__inner{max-width:640px;margin:auto}
+.hero__top{display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:1180px;margin:0 auto clamp(8px,3vw,28px)}
+.hero__logo{display:block;width:52px;height:auto;filter:brightness(0) invert(.94)}
+.hero__eyebrow{text-align:right;line-height:1;font-family:'Forum',serif;text-transform:uppercase;letter-spacing:3px;font-size:.95rem;opacity:.85}
+.hero h1{
+  font-family:'Monsieur La Doulaise',cursive;font-weight:400;
+  font-size:clamp(calc(4.2rem - 2pt),calc(13vw - 2pt),calc(7.5rem - 2pt));line-height:1.05;margin:32px 0 calc(14px + 2pt);
+}
+.hero__text{max-width:52ch;margin:0 auto;font-size:1.02rem;opacity:.92}
+
+/* LISTA */
+.lista{max-width:1180px;margin:0 auto;padding:44px 20px 70px}
+.contador{
+  text-align:center;font-family:'Forum',serif;text-transform:uppercase;letter-spacing:3px;
+  color:var(--suave);font-size:.95rem;margin-bottom:34px;
+}
+.grid{
+  list-style:none;display:grid;gap:26px;
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));
+}
+.card{
+  background:var(--papel);
+  border:2px dashed var(--linea);
+  padding:12px 12px 22px;
+  display:flex;flex-direction:column;
+  transition:transform .3s ease,background .3s ease;
+}
+.card:hover{transform:translateY(-5px);background:#fffaf2}
+.card__foto{position:relative;aspect-ratio:4/3;background:#efe6dc;overflow:hidden}
+.card__foto img{width:100%;height:100%;object-fit:cover;display:block}
+.card__body{padding:20px 10px 0;display:flex;flex-direction:column;flex:1;text-align:center}
+.card__nombre{font-family:'Forum',serif;font-weight:400;font-size:1.65rem;color:var(--bordo);line-height:1.15;margin-bottom:8px}
+.card__desc{font-size:.95rem;color:#555;margin-bottom:22px}
+.card .btn{margin-top:auto;align-self:center}
+
+.card--reservado{background:transparent}
+.card--reservado:hover{transform:none;background:transparent}
+.card--reservado .card__foto img{filter:grayscale(1);opacity:.55}
+.card--reservado .card__nombre{color:var(--suave)}
+.sello{
+  position:absolute;right:12px;bottom:12px;
+  background:var(--papel);color:var(--bordo);
+  font-family:'Forum',serif;text-transform:uppercase;letter-spacing:2px;font-size:.85rem;
+  padding:5px 12px;border:1px solid var(--bordo);
+}
+
+/* BOTONES */
+.btn{
+  font-family:'Forum',serif;font-size:1.1rem;letter-spacing:2px;text-transform:uppercase;
+  background:var(--bordo);color:#fff;border:1px solid var(--bordo);
+  padding:11px 30px;cursor:pointer;border-radius:50px;
+  transition:background .25s ease,color .25s ease;
+}
+.btn:hover{background:var(--bordo-hover)}
+.btn:disabled{background:transparent;color:var(--suave);border-color:var(--linea);cursor:not-allowed}
+.btn--ghost{background:transparent;color:var(--bordo)}
+.btn--ghost:hover{background:var(--crema-2)}
+:focus-visible{outline:2px solid var(--bordo);outline-offset:3px}
+
+.estado{text-align:center;color:var(--suave);margin-top:30px}
+
+/* PIE */
+.pie{background:var(--crema-2);text-align:center;padding:44px 20px;color:var(--suave)}
+.pie__firma{font-family:'Monsieur La Doulaise',cursive;font-size:3.4rem;color:var(--bordo);line-height:1.1}
+
+/* MODAL */
+.modal{
+  margin:auto;border:2px dashed var(--linea);background:var(--papel);
+  width:min(92vw,460px);padding:38px 30px 30px;color:var(--texto);
+  box-shadow:0 20px 60px rgba(60,20,30,.25);
+}
+.modal::backdrop{background:rgba(40,12,20,.55)}
+.modal__cerrar{
+  position:absolute;top:8px;right:14px;background:none;border:0;cursor:pointer;
+  font-size:2rem;line-height:1;color:var(--bordo);
+}
+.modal__eyebrow{font-family:'Forum',serif;text-transform:uppercase;letter-spacing:3px;font-size:.9rem;color:var(--suave);text-align:center}
+.modal__titulo{font-family:'Forum',serif;font-weight:400;font-size:2rem;color:var(--bordo);text-align:center;line-height:1.15;margin:4px 0 8px}
+.modal__ayuda{text-align:center;font-size:.95rem;color:#555;margin-bottom:22px}
+.campo{display:block;font-family:'Forum',serif;letter-spacing:1px;font-size:1.05rem;margin-bottom:6px}
+.modal input{
+  width:100%;font:inherit;font-size:1rem;padding:12px 14px;
+  border:1px solid var(--linea);background:#fff;color:var(--texto);border-radius:4px;
+}
+.modal input:focus{border-color:var(--bordo);outline:2px solid rgba(109,31,47,.2)}
+.error{color:#a32035;font-size:.9rem;margin-top:8px}
+.modal__acciones{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.modal__ok{text-align:center}
+.modal__ok p{margin-bottom:22px}
+.modal__script{font-family:'Monsieur La Doulaise',cursive;font-size:4rem;color:var(--bordo);line-height:1.1;margin-bottom:8px!important}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media (max-width:480px){.modal{padding:34px 20px 24px}.btn{padding:11px 24px}}

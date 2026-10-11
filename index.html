@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lista de regalos · Camila y Matías</title>
+  <meta name="description" content="Lista de regalos del casamiento de Camila y Matías. Elegí un regalo y reservalo para que nadie más lo compre.">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Lora:wght@400;500&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero__top">
+      <img class="hero__logo" src="img/logo.png" alt="Monograma de Camila y Matías" width="56" height="63">
+      <p class="hero__eyebrow">Camila &amp; Matías · 27 de marzo de 2027</p>
+    </div>
+    <div class="hero__inner">
+      <h1>Lista de regalos</h1>
+      <p class="hero__text">Tenerte ese día con nosotros ya es el mejor regalo. Si querés tener un detalle, elegí uno de la lista y reservalo: así nadie más lo compra y no se repite.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="lista" aria-labelledby="lista-titulo">
+      <h2 id="lista-titulo" class="visually-hidden">Regalos</h2>
+      <p class="contador" id="contador" aria-live="polite"></p>
+      <ul class="grid" id="grid"></ul>
+      <p class="estado" id="estado" role="status" hidden></p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p class="pie__firma">Camila y Matías</p>
+    <p>¡Gracias por acompañarnos!</p>
+  </footer>
+
+  <dialog class="modal" id="modal" aria-labelledby="modal-titulo">
+    <form method="dialog" class="modal__cerrar-form"><button class="modal__cerrar" aria-label="Cerrar">&times;</button></form>
+
+    <form class="modal__form" id="form" novalidate>
+      <p class="modal__eyebrow">Reservar regalo</p>
+      <h3 id="modal-titulo" class="modal__titulo"></h3>
+      <p class="modal__ayuda">Dejanos tu nombre y lo marcamos como reservado para vos.</p>
+
+      <label class="campo" for="nombre">Tu nombre</label>
+      <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="60" required placeholder="Nombre y apellido">
+      <p class="error" id="error" role="alert" hidden></p>
+
+      <div class="modal__acciones">
+        <button type="button" class="btn btn--ghost" id="cancelar">Cancelar</button>
+        <button type="submit" class="btn" id="confirmar">Confirmar reserva</button>
+      </div>
+    </form>
+
+    <div class="modal__ok" id="quitar" hidden>
+      <p class="modal__eyebrow">Quitar reserva</p>
+      <h3 id="quitar-titulo" class="modal__titulo"></h3>
+      <p class="modal__ayuda">El regalo vuelve a estar disponible para otros invitados.</p>
+      <p class="error" id="quitar-error" role="alert" hidden></p>
+      <div class="modal__acciones">
+        <button type="button" class="btn btn--ghost" id="quitar-volver">Volver</button>
+        <button type="button" class="btn" id="quitar-confirmar">Sí, quitar reserva</button>
+      </div>
+    </div>
+
+    <div class="modal__ok" id="ok" hidden>
+      <p class="modal__script">¡Gracias!</p>
+      <p id="ok-texto"></p>
+      <button type="button" class="btn" id="ok-cerrar">Cerrar</button>
+    </div>
+  </dialog>
+
+  <script src="js/regalos.js"></script>
+</body>
+</html>

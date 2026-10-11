@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Foto del regalo (provisoria)">
+  <rect width="400" height="300" fill="#efe6dc"/>
+  <circle cx="200" cy="150" r="104" fill="#f8f2ea"/>
+  <g fill="none" stroke="#6d1f2f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="140" y="140" width="120" height="86"/>
+    <rect x="130" y="118" width="140" height="28"/>
+    <path d="M200 118v108"/>
+    <path d="M200 118c-10-30-48-34-48-14 0 16 30 14 48 14z"/>
+    <path d="M200 118c10-30 48-34 48-14 0 16-30 14-48 14z"/>
+  </g>
+</svg>
