@@ -61,6 +61,7 @@ async function enviar(datos) {
 
 /* ---------- render ---------- */
 function render() {
+  try { localStorage.setItem("cache_reservas", JSON.stringify(reservas)); } catch {}
   const libres = REGALOS.filter((g) => !reservas[g.id]).length;
   $("contador").textContent = libres === 0
     ? "¡Ya están todos reservados!"
@@ -162,8 +163,18 @@ $("quitar-confirmar").addEventListener("click", async () => {
 });
 
 /* ---------- inicio ---------- */
+// Se muestran las tarjetas al instante (con las últimas reservas conocidas) y se actualizan cuando responde la planilla.
+try { reservas = JSON.parse(localStorage.getItem("cache_reservas") || "{}"); } catch {}
+render();
+if (ENDPOINT) grid.setAttribute("aria-busy", "true");
 (async () => {
-  try { reservas = await cargar(); }
-  catch { estado.textContent = "No pudimos cargar las reservas. Recargá la página en un momento."; estado.hidden = false; }
+  try {
+    reservas = await cargar();
+    try { localStorage.setItem("cache_reservas", JSON.stringify(reservas)); } catch {}
+  } catch {
+    estado.textContent = "No pudimos actualizar las reservas. Recargá la página en un momento.";
+    estado.hidden = false;
+  }
+  grid.removeAttribute("aria-busy");
   render();
 })();

@@ -13,7 +13,7 @@ html{scroll-behavior:smooth}
 body{
   font-family:'Lora',serif;
   color:var(--texto);
-  background:var(--crema) url("../img/blanco.png");
+  background:var(--crema) url("../img/blanco.jpg");
   line-height:1.6;
   overflow-x:hidden;
 }
@@ -21,7 +21,7 @@ body{
 
 /* HERO */
 .hero{
-  background:var(--bordo) url("../img/rojo.png") center/cover;
+  background:var(--bordo) url("../img/rojo.jpg") center/cover;
   color:#f0eeef;
   text-align:center;
   padding:clamp(24px,4vw,48px) 20px clamp(56px,9vw,100px);
