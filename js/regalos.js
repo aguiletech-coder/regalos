@@ -17,7 +17,7 @@ const REGALOS = [
   { id: "Yogurtera",    nombre: "Yogurtera", desc: "Para preparar yogures caseros, ricos y saludables, disfrutando de algo hecho en casa." , foto:"img/yogurt.png"},
   { id: "pava",       nombre: "Pava eléctrica",   desc: "Agua caliente al instante para el mate de cada tarde." , foto:"img/pava.png"}
 ];
-// Datos opcionales por regalo: precio: "$85.000" y link: "https://..." (si faltan, no se muestran).
+// Datos opcionales por regalo: precio: "$85.000", link: "https://..." y tienda: "Mercado Libre" (nombre que se ve en lugar del link; si falta, se muestra el sitio). Lo que falte no se muestra.
 const FOTO = "img/regalo.svg"; // foto genérica; para una foto real agregá `foto: "img/xxx.jpg"` al regalo
 
 const $ = (id) => document.getElementById(id);
