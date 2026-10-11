@@ -128,3 +128,5 @@ body{
 .detalle a{color:var(--bordo);text-underline-offset:3px;word-break:break-all}
 .detalle a:hover{color:var(--bordo-hover)}
 .ok__compra a{display:inline-block;text-decoration:none}
+
+.card .btn{letter-spacing:1px;padding:11px 22px}

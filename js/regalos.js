@@ -84,7 +84,7 @@ function render() {
         <p class="card__desc"></p>
         ${mio
           ? `<button type="button" class="btn btn--ghost" data-id="${g.id}" data-accion="quitar">Quitar reserva</button>`
-          : `<button type="button" class="btn" data-id="${g.id}" ${tomado ? "disabled" : ""}>${tomado ? "Reservado" : "Reservar"}</button>`}
+          : `<button type="button" class="btn" data-id="${g.id}" ${tomado ? "disabled" : ""}>${tomado ? "Reservado" : "Quiero regalar esto"}</button>`}
       </div>`;
     li.querySelector(".card__nombre").textContent = g.nombre;
     li.querySelector(".card__desc").textContent = g.desc;
